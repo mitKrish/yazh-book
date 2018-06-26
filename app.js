@@ -6,7 +6,8 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 //var indexRouter = require('./routes/index');
-var bookRouter = require('./routes/book');
+var bookRouter = require('./routes/book.js');
+var authRouter = require('./routes/auth.js');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/book', bookRouter);
+app.use('/api/auth', authRouter);
 
 // catch 404 and forward to error handler
 /*app.use(function(req, res, next) {
