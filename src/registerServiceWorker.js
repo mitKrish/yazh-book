@@ -49,6 +49,12 @@ export default function register() {
         registerValidSW(swUrl);
       }
     });
+
+    window.addEventListener('fetch', event => {
+      if (event.request.url.match('^.*(/api/).*$')) {
+        return false;
+      }
+    });
   }
 }
 
@@ -101,6 +107,7 @@ function checkValidServiceWorker(swUrl) {
         registerValidSW(swUrl);
       }
     })
+
     .catch(() => {
       console.log(
         'No internet connection found. App is running in offline mode.'
